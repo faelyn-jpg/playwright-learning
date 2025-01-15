@@ -1,0 +1,21 @@
+{
+  "name": "playwright-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build --clean && tsc",
+    "test": "npm run build && cross-env NODE_PATH=./out cucumber-js -c ./cucumber.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.6"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

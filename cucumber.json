@@ -1,0 +1,14 @@
+{
+    "default": {
+      "format": [
+        "progress",
+        "junit:reports/cucumber.xml"
+      ],
+      "paths": ["src/features/**/*.feature"],
+      "require": [
+        "out/setup/World.js",
+        "out/setup/hooks.js",
+        "out/step-definitions/**/*.js"
+      ]
+    }
+  }

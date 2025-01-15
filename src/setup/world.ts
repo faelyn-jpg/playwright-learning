@@ -6,6 +6,7 @@ import {
   Then as CucumberThen,
 } from '@cucumber/cucumber'
 import { Browser, Page, chromium, BrowserContext } from '@playwright/test'
+import { env } from 'process'
 
 export class LearningWorld extends World {
   browser!: Browser
@@ -15,7 +16,7 @@ export class LearningWorld extends World {
 
   async openBrowser() {
     this.browser = await chromium.launch({
-      headless: false,
+      headless: env.CI ? true : false,
     })
     this.context = await this.browser.newContext()
     this.page = await this.context.newPage()

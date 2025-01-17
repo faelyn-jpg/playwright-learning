@@ -33,15 +33,17 @@ export default class TestLoginPage {
     await this.passwordInput.fill(password)
     await expect(this.loginButton).toBeEnabled()
 
-    // const loginPromise = this.page.waitForResponse(`${this.baseUrl}/login`)
+    const loginPromise = this.page.waitForResponse(
+      `${this.baseUrl}/authenticate`
+    )
     await this.loginButton.click()
 
     // @todo rework later ;-)
-    // const [response] = await Promise.all([
-    //   loginPromise,
-    //   this.loginButton.click(),
-    // ])
+    const [response] = await Promise.all([
+      loginPromise,
+      // this.loginButton.click(),
+    ])
 
-    // expect(response.status()).toBe(302)
+    expect(response.status()).toBe(302)
   }
 }

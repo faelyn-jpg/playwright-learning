@@ -18,4 +18,4 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Tests
-      run: CI=true npm run test -- --tags @test-login
+      run: CI=true npm run test

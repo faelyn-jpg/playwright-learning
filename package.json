@@ -13,7 +13,8 @@
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.6"
+    "@types/node": "^22.10.6",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "cross-env": "^7.0.3"

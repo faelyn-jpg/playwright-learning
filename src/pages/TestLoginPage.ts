@@ -36,12 +36,9 @@ export default class TestLoginPage {
     const loginPromise = this.page.waitForResponse(
       `${this.baseUrl}/authenticate`
     )
-    await this.loginButton.click()
-
-    // @todo rework later ;-)
     const [response] = await Promise.all([
       loginPromise,
-      // this.loginButton.click(),
+      this.loginButton.click(),
     ])
 
     expect(response.status()).toBe(302)

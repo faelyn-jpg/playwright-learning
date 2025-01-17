@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<testsuite name="Cucumber" time="9.672" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-01-17T03:00:16.657Z">
-  <testcase classname="Test Login" name="Verify login with valid credentials" time="9.66">
+<testsuite name="Cucumber" time="7.753" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-01-17T03:18:26.575Z">
+  <testcase classname="Test Login" name="Verify login with valid credentials" time="7.74">
     <failure/>
     <system-out><![CDATA[When I log in to the test page with the credentials "practice" "SuperSecretPassword!"..passed
 Then I should be logged in..................................................pending]]></system-out>

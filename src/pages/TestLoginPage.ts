@@ -7,6 +7,8 @@ export default class TestLoginPage {
   usernameInput: Locator
   passwordInput: Locator
   loginButton: Locator
+  logoutButton: Locator
+  userGreeting: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -18,6 +20,8 @@ export default class TestLoginPage {
     this.usernameInput = page.getByRole('textbox', { name: 'username' })
     this.passwordInput = page.getByRole('textbox', { name: 'password' })
     this.loginButton = this.page.getByRole('button', { name: 'Login' })
+    this.logoutButton = page.getByRole('link', { name: 'Logout' })
+    this.userGreeting = page.getByRole('heading', { name: /Hi, /, level: 3 })
   }
 
   async goto() {
@@ -42,5 +46,10 @@ export default class TestLoginPage {
     ])
 
     expect(response.status()).toBe(302)
+  }
+
+  async verifyLogin(username: string) {
+    await expect(this.logoutButton).toBeVisible()
+    await expect(this.userGreeting).toContainText('Hi, ' + username + '!')
   }
 }

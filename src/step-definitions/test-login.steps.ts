@@ -14,7 +14,7 @@ When(
   }
 )
 
-Then('I should be logged in', function () {
-  console.log(this.state.username, this.state.password)
-  return 'pending'
+Then('I should be logged in', async function () {
+  const testLoginPage = new TestLoginPage(this.page)
+  await testLoginPage.verifyLogin(this.state.username)
 })

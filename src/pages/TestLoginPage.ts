@@ -53,6 +53,7 @@ export default class TestLoginPage {
   async verifyLogin(username: string) {
     await expect(this.logoutButton).toBeVisible()
     await expect(this.userGreeting).toContainText('Hi, ' + username + '!')
+    await expect(this.pageAlert).toContainText('You logged into a secure area!')
   }
 
   async verifyInvalidLogin() {

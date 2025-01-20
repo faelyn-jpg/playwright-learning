@@ -55,7 +55,9 @@ export default class TestLoginPage {
     await expect(this.userGreeting).toContainText('Hi, ' + username + '!')
   }
 
-  async verifyPasswordInvalid() {
-    await expect(this.pageAlert).toContainText('Your password is invalid!')
+  async verifyInvalidLogin() {
+    await expect(this.pageAlert).toContainText(
+      /Your password is invalid!|Your username is invalid!/
+    )
   }
 }

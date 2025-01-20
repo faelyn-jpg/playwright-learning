@@ -10,3 +10,8 @@ Feature: Test Login
     Scenario: Deny login with invalid password
         When I log in to the test page with the credentials "practice" "InvalidPassword"
         Then I should not be logged in
+
+    @invalid-username
+    Scenario: Deny login with invalid username
+        When I log in to the test page with the credentials "invalidUsername" "SuperSecretPassword!"
+        Then I should not be logged in

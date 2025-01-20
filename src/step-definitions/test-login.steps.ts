@@ -21,5 +21,5 @@ Then('I should be logged in', async function () {
 
 Then('I should not be logged in', async function () {
   const testLoginPage = new TestLoginPage(this.page)
-  await testLoginPage.verifyPasswordInvalid()
+  await testLoginPage.verifyInvalidLogin()
 })

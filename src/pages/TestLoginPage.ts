@@ -9,6 +9,7 @@ export default class TestLoginPage {
   loginButton: Locator
   logoutButton: Locator
   userGreeting: Locator
+  pageAlert: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -22,6 +23,7 @@ export default class TestLoginPage {
     this.loginButton = this.page.getByRole('button', { name: 'Login' })
     this.logoutButton = page.getByRole('link', { name: 'Logout' })
     this.userGreeting = page.getByRole('heading', { name: /Hi, /, level: 3 })
+    this.pageAlert = page.getByRole('alert')
   }
 
   async goto() {
@@ -51,5 +53,9 @@ export default class TestLoginPage {
   async verifyLogin(username: string) {
     await expect(this.logoutButton).toBeVisible()
     await expect(this.userGreeting).toContainText('Hi, ' + username + '!')
+  }
+
+  async verifyPasswordInvalid() {
+    await expect(this.pageAlert).toContainText('Your password is invalid!')
   }
 }

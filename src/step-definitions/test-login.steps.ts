@@ -18,3 +18,8 @@ Then('I should be logged in', async function () {
   const testLoginPage = new TestLoginPage(this.page)
   await testLoginPage.verifyLogin(this.state.username)
 })
+
+Then('I should not be logged in', async function () {
+  const testLoginPage = new TestLoginPage(this.page)
+  await testLoginPage.verifyPasswordInvalid()
+})

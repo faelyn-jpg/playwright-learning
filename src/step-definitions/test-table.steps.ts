@@ -11,10 +11,7 @@ When(
   }
 )
 
-Then(
-  'It should equal value of {string} CPU in yellow label',
-  async function (chosenBrowser: string) {
-    const testDynamicTablePage = new TestDynamicTablePage(this.page)
-    await testDynamicTablePage.verifyCPU(chosenBrowser)
-  }
-)
+Then('It should equal value of CPU in yellow label', async function () {
+  const testDynamicTablePage = new TestDynamicTablePage(this.page)
+  await testDynamicTablePage.verifyCPU(this.state.chosenBrowser)
+})

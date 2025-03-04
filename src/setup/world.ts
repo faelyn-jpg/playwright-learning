@@ -22,6 +22,17 @@ export class LearningWorld extends World {
     this.page = await this.context.newPage()
   }
 
+  async openAuthBrowser() {
+    this.browser = await chromium.launch({
+      headless: env.CI ? true : false,
+    })
+
+    this.context = await this.browser.newContext({
+      storageState: 'src/helper/auth/user.json',
+    })
+    this.page = await this.context.newPage()
+  }
+
   async closeBrowser() {
     await this.page.close()
     await this.context.close()

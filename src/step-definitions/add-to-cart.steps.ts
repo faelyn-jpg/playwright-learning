@@ -12,3 +12,8 @@ Then('The cart should have a book in it', async function () {
   const booksPage = new BooksPage(this.page)
   await booksPage.verifyAddedToCart()
 })
+
+Then('The cart should have the correct book in it', async function () {
+  const booksPage = new BooksPage(this.page)
+  await booksPage.verifyCorrectBook
+})

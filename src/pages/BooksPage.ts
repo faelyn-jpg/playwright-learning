@@ -10,6 +10,7 @@ export default class BooksPage {
   addToCartButton: Locator
   cartNotification: Locator
   cartPageHeading: Locator
+  bookNameInCart: Locator
 
   constructor(page: Page) {
     this.page = page
@@ -20,11 +21,12 @@ export default class BooksPage {
     })
     this.bookPrice = page.getByTestId('price-674108466cb6226060a20d44')
     this.bookName = page.getByTestId('title-674108466cb6226060a20d44')
+    this.bookNameInCart = page.getByRole('table')
     this.cartLink = page.getByAltText('Cart')
     this.addToCartButton = page.getByTestId('cart-674108466cb6226060a20d44')
     this.cartNotification = page.getByRole('link', { name: 'Cart 1' })
     this.cartPageHeading = page.getByRole('heading', {
-      name: 'Books List',
+      name: 'Shopping Cart',
       level: 1,
     })
   }
@@ -34,7 +36,7 @@ export default class BooksPage {
   }
 
   async verifyPageContent() {
-    await expect(this.cartPageHeading).toBeVisible()
+    await expect(this.bookstorePageHeading).toBeVisible()
   }
 
   async addToCart() {
@@ -43,5 +45,12 @@ export default class BooksPage {
 
   async verifyAddedToCart() {
     await expect(this.cartNotification).toContainText('1')
+  }
+
+  async verifyCorrectBook() {
+    const book = await this.bookName.textContent()
+    await this.cartNotification.click()
+    await expect(this.cartPageHeading).toBeVisible()
+    await expect(this.bookNameInCart).toContainText(`${book}`)
   }
 }
